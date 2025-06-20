@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Lol03Lw/mKgAZQiUuzWgn8LpjCHLTIcx2zbkbjiIPkI=",
+  "Source": "WebAPI_Person",
+  "BasePath": "_content/WebAPI_Person",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
