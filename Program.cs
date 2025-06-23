@@ -31,9 +31,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("PermitirTudo");
-
 app.PersonRoutes();
-
 app.UseHttpsRedirection();
-
 app.Run();
