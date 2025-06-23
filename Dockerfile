@@ -10,10 +10,5 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app/out .
 
-# Render espera que a app escute na porta da variável de ambiente PORT
-ENV ASPNETCORE_URLS=http://+:$PORT
-
-ENTRYPOINT ["dotnet", "WebAPI_Person.dll"]
-
-# Rodar o script de migração
-CMD ["sh", "run_migrations.sh"]
+# Rodar migrações e depois iniciar a app
+ENTRYPOINT ["sh", "-c", "dotnet ef database update && dotnet WebAPI_Person.dll"]
