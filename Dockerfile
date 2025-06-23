@@ -4,21 +4,22 @@ WORKDIR /app
 
 COPY . .
 
-# Restaura pacotes
 RUN dotnet restore
 
-# Instala o CLI do EF Core
+# Instala o EF CLI
 RUN dotnet tool install --global dotnet-ef
 ENV PATH="$PATH:/root/.dotnet/tools"
 
-# Faz o build
 RUN dotnet build -c Release
 
-# Roda as migrações
+# Roda as migrações (gera o app.db no /app)
 RUN dotnet ef database update
 
 # Publica a aplicação
 RUN dotnet publish -c Release -o out
+
+# Copia o banco SQLite para a pasta de publicação
+RUN cp person.sqlite out/person.sqlite
 
 # Etapa 2: Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
