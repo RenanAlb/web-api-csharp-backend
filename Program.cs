@@ -14,10 +14,10 @@ builder.Services.AddScoped<PersonContext>();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("PermitirTudo", policy =>
+    options.AddPolicy("PermitirFrontend", policy =>
     {
         policy
-            .AllowAnyOrigin()
+            .WithOrigins("https://web-api-csharp-frontend.onrender.com")
             .AllowAnyMethod()
             .AllowAnyHeader();
     });
@@ -25,7 +25,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-app.UseCors("PerimitirTudo");
+app.UseCors("PermitirFrontend");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
