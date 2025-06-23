@@ -14,3 +14,6 @@ COPY --from=build /app/out .
 ENV ASPNETCORE_URLS=http://+:$PORT
 
 ENTRYPOINT ["dotnet", "WebAPI_Person.dll"]
+
+# Rodar o script de migração
+CMD ["sh", "run_migrations.sh"]
